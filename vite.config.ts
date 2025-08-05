@@ -20,7 +20,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api/webhook': {
-        target: 'https://your-n8n-domain.com',
+        target: 'https://hungdang1.app.n8n.cloud',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/webhook/, '/webhook/cm'),
         secure: true,

@@ -7,6 +7,7 @@ import EmailInput from './components/EmailInput';
 import ImageUrlInput from './components/ImageUrlInput';
 import SubmitButton from './components/SubmitButton';
 import ConnectionTest from './components/ConnectionTest';
+import WebhookConfig from './components/WebhookConfig';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -144,6 +145,9 @@ const App: React.FC = () => {
             </div>
           )}
         </div>
+
+        {/* Webhook Configuration Component */}
+        <WebhookConfig />
 
         {/* Connection Test Component */}
         <ConnectionTest />
