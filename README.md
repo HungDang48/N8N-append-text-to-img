@@ -44,6 +44,49 @@ npm run dev
 
 4. Open your browser and navigate to `http://localhost:5173`
 
+## 🚀 Deployment to Vercel
+
+### **Step 1: Prepare Environment Variables**
+
+Create a `.env` file in the root directory:
+```bash
+# Copy the example file
+cp env.example .env
+
+# Edit the .env file with your actual webhook URL
+VITE_WEBHOOK_URL=https://your-actual-n8n-domain.com/webhook/cm
+```
+
+### **Step 2: Deploy to Vercel**
+
+1. **Install Vercel CLI** (optional):
+```bash
+npm i -g vercel
+```
+
+2. **Deploy using Vercel Dashboard**:
+   - Go to [vercel.com](https://vercel.com)
+   - Connect your GitHub repository
+   - Add environment variables in Vercel dashboard:
+     - `VITE_WEBHOOK_URL`: Your N8N webhook URL
+     - `VITE_API_TIMEOUT`: 30000 (optional)
+     - `VITE_DEBUG`: false (optional)
+
+3. **Deploy using CLI**:
+```bash
+vercel --prod
+```
+
+### **Step 3: Configure Environment Variables in Vercel**
+
+In your Vercel dashboard, go to Project Settings > Environment Variables and add:
+
+| Variable | Value | Environment |
+|----------|-------|-------------|
+| `VITE_WEBHOOK_URL` | `https://your-n8n-domain.com/webhook/cm` | Production |
+| `VITE_API_TIMEOUT` | `30000` | Production (optional) |
+| `VITE_DEBUG` | `false` | Production (optional) |
+
 ## 🏗️ Build for Production
 
 ```bash
@@ -59,9 +102,12 @@ src/
 ├── components/
 │   ├── EmailInput.tsx      # Email input with validation
 │   ├── ImageUrlInput.tsx   # Image URL input with preview
-│   └── SubmitButton.tsx    # Submit button with loading state
+│   ├── SubmitButton.tsx    # Submit button with loading state
+│   └── ConnectionTest.tsx  # Connection test component
 ├── services/
 │   └── api.ts             # API service for webhook calls
+├── config/
+│   └── api.ts             # API configuration and environment variables
 ├── types/
 │   └── index.ts           # TypeScript type definitions
 ├── utils/
@@ -73,12 +119,20 @@ src/
 
 ## 🔧 Configuration
 
+### Environment Variables
+
+The application uses the following environment variables:
+
+- `VITE_WEBHOOK_URL`: Your N8N webhook URL (required)
+- `VITE_API_TIMEOUT`: API timeout in milliseconds (optional, default: 30000)
+- `VITE_DEBUG`: Enable debug logging (optional, default: false)
+
 ### API Endpoint
 
-Update the webhook URL in `src/services/api.ts`:
+Update the webhook URL in your environment variables:
 
-```typescript
-const API_BASE_URL = 'https://your-n8n-domain.com/webhook/cm';
+```bash
+VITE_WEBHOOK_URL=https://your-actual-n8n-domain.com/webhook/cm
 ```
 
 ### Supported Image Formats
@@ -141,6 +195,7 @@ The application handles various error scenarios:
 - Inaccessible image URLs
 - Network errors
 - API response errors
+- CORS errors
 
 ## 📱 Responsive Design
 
@@ -157,6 +212,13 @@ The application is fully responsive and works on:
 - Image format validation
 - Input sanitization
 - CORS-compliant API calls
+
+## 🚀 Performance Optimizations
+
+- Code splitting with manual chunks
+- Minified production build
+- Optimized bundle size
+- Lazy loading of components
 
 ## 📄 License
 

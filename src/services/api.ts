@@ -1,10 +1,13 @@
 import axios from 'axios';
 import { ApiResponse } from '../types';
-import { getApiUrl, API_CONFIG } from '../config/api';
+import { getApiUrl, API_CONFIG, logDebug } from '../config/api';
 
 export const uploadImageUrl = async (email: string, imageUrl: string): Promise<ApiResponse> => {
+  const apiUrl = getApiUrl();
+  logDebug('Making API request', { apiUrl, email, imageUrl });
+
   try {
-    const response = await axios.post(getApiUrl(), {
+    const response = await axios.post(apiUrl, {
       email,
       image_url: imageUrl
     }, {
@@ -12,12 +15,16 @@ export const uploadImageUrl = async (email: string, imageUrl: string): Promise<A
       timeout: API_CONFIG.TIMEOUT,
     });
 
+    logDebug('API response received', response.data);
+
     return {
       success: true,
       data: response.data,
       message: 'Image URL uploaded successfully!'
     };
   } catch (error) {
+    logDebug('API error occurred', error);
+    
     if (axios.isAxiosError(error)) {
       // Handle CORS errors specifically
       if (error.code === 'ERR_NETWORK' || error.message.includes('CORS')) {
