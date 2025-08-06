@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import { FormData } from './types';
-import { uploadImageUrl } from './services/api';
+import { uploadKeyword } from './services/api';
 import EmailInput from './components/EmailInput';
-import ImageUrlInput from './components/ImageUrlInput';
+import KeywordInput from './components/KeywordInput';
 import SubmitButton from './components/SubmitButton';
-import ConnectionTest from './components/ConnectionTest';
+import UserMode from './components/UserMode';
+import DeveloperMode from './components/DeveloperMode';
+import ModeToggle from './components/ModeToggle';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [responseData, setResponseData] = useState<any>(null);
+  const [isDeveloperMode, setIsDeveloperMode] = useState(false);
 
   const {
     register,
@@ -23,15 +26,15 @@ const App: React.FC = () => {
     mode: 'onChange',
     defaultValues: {
       email: '',
-      imageUrl: ''
+      keyword: ''
     }
   });
 
-  const currentImageUrl = watch('imageUrl');
+  const currentKeyword = watch('keyword');
 
   const onSubmit = async (data: FormData) => {
-    if (!data.imageUrl) {
-      toast.error('Please enter an image URL');
+    if (!data.keyword) {
+      toast.error('Please enter a keyword');
       return;
     }
 
@@ -39,16 +42,16 @@ const App: React.FC = () => {
     setResponseData(null);
 
     try {
-      // Upload image URL to API
-      const result = await uploadImageUrl(data.email, data.imageUrl);
+      // Upload keyword to API
+      const result = await uploadKeyword(data.email, data.keyword);
       
       if (result.success) {
-        toast.success(result.message || 'Image URL uploaded successfully!');
+        toast.success(result.message || 'Keyword uploaded successfully!');
         setResponseData(result.data);
         // Reset form after successful upload
         reset();
       } else {
-        toast.error(result.message || 'Failed to upload image URL');
+        toast.error(result.message || 'Failed to upload keyword');
       }
     } catch (error) {
       toast.error('An unexpected error occurred');
@@ -58,7 +61,7 @@ const App: React.FC = () => {
     }
   };
 
-  const isFormValid = isValid && currentImageUrl && currentImageUrl.trim() !== '';
+  const isFormValid = isValid && currentKeyword && currentKeyword.trim() !== '';
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -76,22 +79,23 @@ const App: React.FC = () => {
       <div className="max-w-md mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Image URL Upload App
+            Creating Headline Image
           </h1>
-          <p className="text-gray-600">
-            Enter an image URL and we'll process it for you
-          </p>
         </div>
+
+        {/* Mode Toggle */}
+        <ModeToggle 
+          isDeveloperMode={isDeveloperMode} 
+          onToggle={() => setIsDeveloperMode(!isDeveloperMode)} 
+        />
 
         <div className="bg-white shadow-lg rounded-lg p-6">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <EmailInput register={register} error={errors.email} />
             
-            <ImageUrlInput 
+            <KeywordInput 
               register={register} 
-              setValue={setValue} 
-              watch={watch} 
-              error={errors.imageUrl}
+              error={errors.keyword}
             />
             
             <SubmitButton isLoading={isLoading} disabled={!isFormValid} />
@@ -101,12 +105,12 @@ const App: React.FC = () => {
           {responseData && (
             <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-md">
               <h3 className="text-sm font-medium text-green-800 mb-2">
-                Upload Successful!
+                Generation Successful!
               </h3>
               <div className="text-sm text-green-700">
                 {responseData.url && (
                   <div className="mb-2">
-                    <strong>Image URL:</strong>
+                    <strong>Generated Image URL:</strong>
                     <a
                       href={responseData.url}
                       target="_blank"
@@ -145,11 +149,11 @@ const App: React.FC = () => {
           )}
         </div>
 
-        {/* Connection Test Component */}
-        <ConnectionTest />
+        {/* Mode-specific components */}
+        {isDeveloperMode ? <DeveloperMode /> : <UserMode />}
 
         {/* Form Preview */}
-        {currentImageUrl && currentImageUrl.trim() !== '' && (
+        {currentKeyword && currentKeyword.trim() !== '' && (
           <div className="mt-6 bg-white shadow-lg rounded-lg p-6">
             <h3 className="text-lg font-medium text-gray-900 mb-4">Form Preview</h3>
             <div className="space-y-3">
@@ -158,9 +162,9 @@ const App: React.FC = () => {
                 <p className="text-sm text-gray-900">{watch('email') || 'Not provided'}</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Image URL:</span>
-                <p className="text-sm text-gray-900 break-all">
-                  {currentImageUrl}
+                <span className="text-sm font-medium text-gray-500">Keyword:</span>
+                <p className="text-sm text-gray-900">
+                  {currentKeyword}
                 </p>
               </div>
             </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { getApiUrl } from '../config/api';
 
-const ConnectionTest: React.FC = () => {
+const DeveloperMode: React.FC = () => {
   const [isTesting, setIsTesting] = useState(false);
   const [testResult, setTestResult] = useState<string>('');
 
@@ -55,7 +55,7 @@ const ConnectionTest: React.FC = () => {
   return (
     <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-md">
       <h3 className="text-sm font-medium text-blue-800 mb-2">
-        Connection Test
+        Developer Mode - Connection Test
       </h3>
       <p className="text-xs text-blue-600 mb-3">
         Test the connection to your N8N webhook
@@ -82,4 +82,4 @@ const ConnectionTest: React.FC = () => {
   );
 };
 
-export default ConnectionTest; 
+export default DeveloperMode; 

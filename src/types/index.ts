@@ -1,6 +1,6 @@
 export interface FormData {
   email: string;
-  imageUrl: string;
+  keyword: string;
 }
 
 export interface ApiResponse {

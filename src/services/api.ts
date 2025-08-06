@@ -2,14 +2,14 @@ import axios from 'axios';
 import { ApiResponse } from '../types';
 import { getApiUrl, API_CONFIG, logDebug } from '../config/api';
 
-export const uploadImageUrl = async (email: string, imageUrl: string): Promise<ApiResponse> => {
+export const uploadKeyword = async (email: string, keyword: string): Promise<ApiResponse> => {
   const apiUrl = getApiUrl();
-  logDebug('Making API request', { apiUrl, email, imageUrl });
+  logDebug('Making API request', { apiUrl, email, keyword });
 
   try {
     const response = await axios.post(apiUrl, {
       email,
-      image_url: imageUrl
+      keyword
     }, {
       headers: API_CONFIG.HEADERS,
       timeout: API_CONFIG.TIMEOUT,
@@ -20,7 +20,7 @@ export const uploadImageUrl = async (email: string, imageUrl: string): Promise<A
     return {
       success: true,
       data: response.data,
-      message: 'Image URL uploaded successfully!'
+      message: 'Keyword uploaded successfully!'
     };
   } catch (error) {
     logDebug('API error occurred', error);
@@ -44,7 +44,7 @@ export const uploadImageUrl = async (email: string, imageUrl: string): Promise<A
       
       return {
         success: false,
-        message: error.message || 'Failed to upload image URL'
+        message: error.message || 'Failed to upload keyword'
       };
     }
     
