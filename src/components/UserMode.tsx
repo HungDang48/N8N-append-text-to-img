@@ -5,7 +5,6 @@ import { getApiUrl } from '../config/api';
 const UserMode: React.FC = () => {
   const [isTesting, setIsTesting] = useState(true);
   const [isConnected, setIsConnected] = useState(false);
-  const [testMessage, setTestMessage] = useState('');
 
   useEffect(() => {
     testConnection();
@@ -13,7 +12,6 @@ const UserMode: React.FC = () => {
 
   const testConnection = async () => {
     setIsTesting(true);
-    setTestMessage('');
 
     try {
       const testData = {
@@ -21,7 +19,7 @@ const UserMode: React.FC = () => {
         keyword: 'test keyword'
       };
 
-      const response = await axios.post(getApiUrl(), testData, {
+      await axios.post(getApiUrl(), testData, {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -30,20 +28,8 @@ const UserMode: React.FC = () => {
       });
 
       setIsConnected(true);
-      setTestMessage('Connection successful');
     } catch (error: any) {
       setIsConnected(false);
-      if (axios.isAxiosError(error)) {
-        if (error.response) {
-          setTestMessage(`Server error: ${error.response.status}`);
-        } else if (error.code === 'ERR_NETWORK') {
-          setTestMessage('Network connection failed');
-        } else {
-          setTestMessage('Connection failed');
-        }
-      } else {
-        setTestMessage('Connection failed');
-      }
     } finally {
       setIsTesting(false);
     }

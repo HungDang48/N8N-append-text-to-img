@@ -19,7 +19,6 @@ const App: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
-    setValue,
     watch,
     reset
   } = useForm<FormData>({
