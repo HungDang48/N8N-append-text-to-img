@@ -40,10 +40,10 @@
 ✓ 92 modules transformed.
 dist/index.html                   0.63 kB │ gzip:  0.35 kB
 dist/assets/index-DDkY033t.css   12.63 kB │ gzip:  3.07 kB
-dist/assets/index-BOUahz6F.js    13.35 kB │ gzip:  4.53 kB
+dist/assets/index-DYAxfmHJ.js    13.37 kB │ gzip:  4.54 kB
 dist/assets/utils-BUgZNtP0.js    69.88 kB │ gzip: 27.02 kB
 dist/assets/vendor-nf7bT_Uh.js  140.87 kB │ gzip: 45.26 kB
-✓ built in 2.83s
+✓ built in 2.12s
 ```
 
 ### **✅ Features Implemented:**
@@ -82,7 +82,7 @@ git push origin main
 1. Go to [vercel.com](https://vercel.com)
 2. Import repository from GitHub
 3. Configure environment variables:
-   - `VITE_WEBHOOK_URL` = `https://hungdang1.app.n8n.cloud/webhook/cm`
+   - `VITE_WEBHOOK_URL` = `https://hungdang1.app.n8n.cloud/webhook/imgheadline`
    - `VITE_API_TIMEOUT` = `30000` (optional)
    - `VITE_DEBUG` = `false` (optional)
 
@@ -97,7 +97,7 @@ git push origin main
 
 | Variable | Value | Required |
 |----------|-------|----------|
-| `VITE_WEBHOOK_URL` | `https://hungdang1.app.n8n.cloud/webhook/cm` | ✅ Yes |
+| `VITE_WEBHOOK_URL` | `https://hungdang1.app.n8n.cloud/webhook/imgheadline` | ✅ Yes |
 | `VITE_API_TIMEOUT` | `30000` | ❌ Optional |
 | `VITE_DEBUG` | `false` | ❌ Optional |
 

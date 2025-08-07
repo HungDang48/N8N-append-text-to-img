@@ -4,7 +4,7 @@
 
 ### **URL N8N thực tế:**
 ```
-https://hungdang1.app.n8n.cloud/webhook/cm
+https://hungdang1.app.n8n.cloud/webhook/imgheadline
 ```
 
 ## 🚀 Cách cập nhật Vercel
@@ -18,7 +18,7 @@ https://hungdang1.app.n8n.cloud/webhook/cm
 2. **Vào Settings → Environment Variables:**
    - Click "Add New"
    - Variable Name: `VITE_WEBHOOK_URL`
-   - Value: `https://hungdang1.app.n8n.cloud/webhook/cm`
+   - Value: `https://hungdang1.app.n8n.cloud/webhook/imgheadline`
    - Environment: Production
    - Click "Save"
 
@@ -52,13 +52,13 @@ Settings → Environment Variables
 ```
 
 Đảm bảo có:
-- `VITE_WEBHOOK_URL` = `https://hungdang1.app.n8n.cloud/webhook/cm`
+- `VITE_WEBHOOK_URL` = `https://hungdang1.app.n8n.cloud/webhook/imgheadline`
 
 ### **Test N8N Webhook trực tiếp:**
 ```bash
-curl -X POST https://hungdang1.app.n8n.cloud/webhook/cm \
+curl -X POST https://hungdang1.app.n8n.cloud/webhook/imgheadline \
   -H "Content-Type: application/json" \
-  -d '{"email":"test@example.com","image_url":"https://via.placeholder.com/150"}'
+  -d '{"email":"test@example.com","keyword":"test keyword"}'
 ```
 
 ### **Kiểm tra N8N Workflow:**
@@ -87,7 +87,7 @@ curl -X POST https://hungdang1.app.n8n.cloud/webhook/cm \
 
 ### **URL sẽ được sử dụng:**
 - Development: `/api/webhook` (proxy)
-- Production: `https://hungdang1.app.n8n.cloud/webhook/cm`
+- Production: `https://hungdang1.app.n8n.cloud/webhook/imgheadline`
 
 ## 🚨 Troubleshooting
 

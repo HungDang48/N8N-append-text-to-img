@@ -22,7 +22,7 @@ export default defineConfig({
       '/api/webhook': {
         target: 'https://hungdang1.app.n8n.cloud',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/webhook/, '/webhook/cm'),
+        rewrite: (path) => path.replace(/^\/api\/webhook/, '/webhook/imgheadline'),
         secure: true,
         headers: {
           'Access-Control-Allow-Origin': '*',

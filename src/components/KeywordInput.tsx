@@ -39,7 +39,7 @@ const KeywordInput: React.FC<KeywordInputProps> = ({ register, error }) => {
         <div className="space-y-2">
           <div className="relative">
             <img
-              src="https://bqn.1cdn.vn/2025/02/28/baodanang.vn-dataimages-202502-original-_images1768124_dt.jpg"
+              src="https://res.cloudinary.com/dkccddiuv/image/upload/v1754530260/Yellow_and_Blue_qi6ydy.png"
               alt="Headline Image Preview"
               className="w-full h-48 object-cover rounded-lg border border-gray-300"
             />
