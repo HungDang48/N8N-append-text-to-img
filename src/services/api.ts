@@ -2,14 +2,18 @@ import axios from 'axios';
 import { ApiResponse } from '../types';
 import { getApiUrl, API_CONFIG, logDebug } from '../config/api';
 
+// Fixed image URL that will be sent with every request
+const FIXED_IMAGE_URL = 'https://res.cloudinary.com/dkccddiuv/image/upload/v1754530260/Yellow_and_Blue_qi6ydy.png';
+
 export const uploadKeyword = async (email: string, keyword: string): Promise<ApiResponse> => {
   const apiUrl = getApiUrl();
-  logDebug('Making API request', { apiUrl, email, keyword });
+  logDebug('Making API request', { apiUrl, email, keyword, imageUrl: FIXED_IMAGE_URL });
 
   try {
     const response = await axios.post(apiUrl, {
       email,
-      keyword
+      keyword,
+      image_url: FIXED_IMAGE_URL
     }, {
       headers: API_CONFIG.HEADERS,
       timeout: API_CONFIG.TIMEOUT,
@@ -20,7 +24,7 @@ export const uploadKeyword = async (email: string, keyword: string): Promise<Api
     return {
       success: true,
       data: response.data,
-      message: 'Keyword uploaded successfully!'
+      message: 'Data uploaded successfully!'
     };
   } catch (error) {
     logDebug('API error occurred', error);
@@ -44,7 +48,7 @@ export const uploadKeyword = async (email: string, keyword: string): Promise<Api
       
       return {
         success: false,
-        message: error.message || 'Failed to upload keyword'
+        message: error.message || 'Failed to upload data'
       };
     }
     

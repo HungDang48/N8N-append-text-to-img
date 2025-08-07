@@ -5,6 +5,7 @@ import { getApiUrl } from '../config/api';
 const UserMode: React.FC = () => {
   const [isTesting, setIsTesting] = useState(true);
   const [isConnected, setIsConnected] = useState(false);
+  const [testResult, setTestResult] = useState<string>('');
 
   useEffect(() => {
     testConnection();
@@ -12,11 +13,13 @@ const UserMode: React.FC = () => {
 
   const testConnection = async () => {
     setIsTesting(true);
+    setTestResult('');
 
     try {
       const testData = {
         email: 'test@example.com',
-        keyword: 'test keyword'
+        keyword: 'test keyword',
+        image_url: 'https://res.cloudinary.com/dkccddiuv/image/upload/v1754530260/Yellow_and_Blue_qi6ydy.png'
       };
 
       await axios.post(getApiUrl(), testData, {
@@ -32,6 +35,29 @@ const UserMode: React.FC = () => {
       setIsConnected(false);
     } finally {
       setIsTesting(false);
+    }
+  };
+
+  const handleTestClick = async () => {
+    setTestResult('Checking...');
+    try {
+      const testData = {
+        email: 'gologolo4567@gmail.com',
+        keyword: 'test form',
+        image_url: 'https://res.cloudinary.com/dkccddiuv/image/upload/v1754530260/Yellow_and_Blue_qi6ydy.png'
+      };
+
+      await axios.post(getApiUrl(), testData, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        timeout: 10000,
+      });
+
+      setTestResult('Form ready to run!');
+    } catch (error: any) {
+      setTestResult('Form not ready, try again later.');
     }
   };
 
@@ -65,9 +91,20 @@ const UserMode: React.FC = () => {
             Ready to Generate
           </h3>
         </div>
-        <p className="text-sm text-green-700">
+        <p className="text-sm text-green-700 mb-3">
           Your headline image will be generated automatically when you submit the form.
         </p>
+        <button
+          onClick={handleTestClick}
+          className="px-3 py-1 text-xs bg-green-600 text-white rounded hover:bg-green-700"
+        >
+          Test Form
+        </button>
+        {testResult && (
+          <div className="mt-2 text-xs text-green-700">
+            {testResult}
+          </div>
+        )}
       </div>
     );
   }

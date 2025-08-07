@@ -7,13 +7,10 @@ import EmailInput from './components/EmailInput';
 import KeywordInput from './components/KeywordInput';
 import SubmitButton from './components/SubmitButton';
 import UserMode from './components/UserMode';
-import DeveloperMode from './components/DeveloperMode';
-import ModeToggle from './components/ModeToggle';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [responseData, setResponseData] = useState<any>(null);
-  const [isDeveloperMode, setIsDeveloperMode] = useState(false);
 
   const {
     register,
@@ -41,16 +38,16 @@ const App: React.FC = () => {
     setResponseData(null);
 
     try {
-      // Upload keyword to API
+      // Upload data to API
       const result = await uploadKeyword(data.email, data.keyword);
       
       if (result.success) {
-        toast.success(result.message || 'Keyword uploaded successfully!');
+        toast.success(result.message || 'Data uploaded successfully!');
         setResponseData(result.data);
         // Reset form after successful upload
         reset();
       } else {
-        toast.error(result.message || 'Failed to upload keyword');
+        toast.error(result.message || 'Failed to upload data');
       }
     } catch (error) {
       toast.error('An unexpected error occurred');
@@ -81,12 +78,6 @@ const App: React.FC = () => {
             Creating Headline Image
           </h1>
         </div>
-
-        {/* Mode Toggle */}
-        <ModeToggle 
-          isDeveloperMode={isDeveloperMode} 
-          onToggle={() => setIsDeveloperMode(!isDeveloperMode)} 
-        />
 
         <div className="bg-white shadow-lg rounded-lg p-6">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -148,27 +139,8 @@ const App: React.FC = () => {
           )}
         </div>
 
-        {/* Mode-specific components */}
-        {isDeveloperMode ? <DeveloperMode /> : <UserMode />}
-
-        {/* Form Preview */}
-        {currentKeyword && currentKeyword.trim() !== '' && (
-          <div className="mt-6 bg-white shadow-lg rounded-lg p-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">Form Preview</h3>
-            <div className="space-y-3">
-              <div>
-                <span className="text-sm font-medium text-gray-500">Email:</span>
-                <p className="text-sm text-gray-900">{watch('email') || 'Not provided'}</p>
-              </div>
-              <div>
-                <span className="text-sm font-medium text-gray-500">Keyword:</span>
-                <p className="text-sm text-gray-900">
-                  {currentKeyword}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* User Mode only */}
+        <UserMode />
       </div>
     </div>
   );
