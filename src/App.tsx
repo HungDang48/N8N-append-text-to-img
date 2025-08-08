@@ -42,12 +42,12 @@ const App: React.FC = () => {
       const result = await uploadKeyword(data.email, data.keyword);
       
       if (result.success) {
-        toast.success(result.message || 'Data uploaded successfully!');
+        toast.success(result.message || 'Generated image successfully!');
         setResponseData(result.data);
         // Reset form after successful upload
         reset();
       } else {
-        toast.error(result.message || 'Failed to upload data');
+        toast.error(result.message || 'Failed to generated image');
       }
     } catch (error) {
       toast.error('An unexpected error occurred');
