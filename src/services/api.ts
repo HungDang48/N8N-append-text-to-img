@@ -24,7 +24,7 @@ export const uploadKeyword = async (email: string, keyword: string): Promise<Api
     return {
       success: true,
       data: response.data,
-      message: 'Data uploaded successfully!'
+      message: 'Generated image successfully!'
     };
   } catch (error) {
     logDebug('API error occurred', error);
@@ -48,7 +48,7 @@ export const uploadKeyword = async (email: string, keyword: string): Promise<Api
       
       return {
         success: false,
-        message: error.message || 'Failed to upload data'
+        message: error.message || 'Failed to generated image'
       };
     }
     
