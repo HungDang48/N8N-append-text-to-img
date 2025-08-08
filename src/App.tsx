@@ -95,7 +95,7 @@ const App: React.FC = () => {
           {responseData && (
             <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-md">
               <h3 className="text-sm font-medium text-green-800 mb-2">
-                Generation Successful!
+              Your generated image will be delivered to your email inbox shortly.
               </h3>
               <div className="text-sm text-green-700">
                 {responseData.url && (

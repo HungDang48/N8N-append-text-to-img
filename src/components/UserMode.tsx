@@ -55,9 +55,9 @@ const UserMode: React.FC = () => {
         timeout: 10000,
       });
 
-      setTestResult('Form ready to run!');
+      setTestResult('Ready to run!');
     } catch (error: any) {
-      setTestResult('Form not ready, try again later.');
+      setTestResult('Server is not ready, try again later.');
     }
   };
 
@@ -92,7 +92,7 @@ const UserMode: React.FC = () => {
           </h3>
         </div>
         <p className="text-sm text-green-700 mb-3">
-          Your headline image will be generated automatically when you submit the form.
+        Your headline image will be automatically generated upon your submission.
         </p>
         <button
           onClick={handleTestClick}
