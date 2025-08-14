@@ -82,7 +82,7 @@ git push origin main
 1. Go to [vercel.com](https://vercel.com)
 2. Import repository from GitHub
 3. Configure environment variables:
-   - `VITE_WEBHOOK_URL` = `https://hungdang1.app.n8n.cloud/webhook/imgheadline`
+   - `VITE_WEBHOOK_URL` = `https://hungdang2.app.n8n.cloud/webhook/imgheadline`
    - `VITE_API_TIMEOUT` = `30000` (optional)
    - `VITE_DEBUG` = `false` (optional)
 
@@ -97,7 +97,7 @@ git push origin main
 
 | Variable | Value | Required |
 |----------|-------|----------|
-| `VITE_WEBHOOK_URL` | `https://hungdang1.app.n8n.cloud/webhook/imgheadline` | ✅ Yes |
+| `VITE_WEBHOOK_URL` | `https://hungdang2.app.n8n.cloud/webhook/imgheadline` | ✅ Yes |
 | `VITE_API_TIMEOUT` | `30000` | ❌ Optional |
 | `VITE_DEBUG` | `false` | ❌ Optional |
 
