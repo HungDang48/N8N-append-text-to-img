@@ -1,19 +1,18 @@
-# N8N Image URL Upload App
+# N8N Headline Image Generator
 
-A modern React TypeScript application for submitting image URLs to an N8N webhook with email validation and real-time preview.
+A modern React TypeScript application for generating headline images using N8N workflow with Cloudinary integration. The app allows users to input keywords and receive generated images with text overlays via email.
 
 ## 🚀 Features
 
 - **Email Validation**: Real-time email format validation using react-hook-form
-- **Image URL Input**: Enter direct links to images with validation
-- **URL Validation**: Checks for valid image URLs (JPG, JPEG, PNG, GIF, WebP)
-- **Image Preview**: Real-time preview of images from URLs
-- **URL Accessibility Check**: Verifies if the image URL is accessible
-- **Form Preview**: Live preview of form data before submission
-- **API Integration**: Sends data to N8N webhook with image URLs
+- **Keyword Input**: Enter keywords to search for news headlines
+- **News Integration**: Uses Zenserp API to fetch Google News headlines
+- **Image Generation**: Creates headline images with text overlays using Cloudinary
+- **Email Delivery**: Sends generated images directly to user's email
 - **Responsive Design**: Works perfectly on mobile and desktop
 - **Toast Notifications**: User-friendly success/error notifications
 - **Loading States**: Visual feedback during processing
+- **N8N Workflow Integration**: Seamless integration with N8N automation platform
 
 ## 🛠️ Tech Stack
 
@@ -44,6 +43,32 @@ npm run dev
 
 4. Open your browser and navigate to `http://localhost:5173`
 
+## 🔧 N8N Workflow Setup
+
+This application is designed to work with a specific N8N workflow that:
+
+1. **Receives webhook data** (email, keyword, image_url)
+2. **Fetches news headlines** using Zenserp Google News API
+3. **Generates image transformations** with text overlays using Cloudinary
+4. **Uploads processed images** to Cloudinary
+5. **Sends results via email** using Gmail integration
+
+### **Webhook Configuration**
+- **URL**: `https://hungdang2.app.n8n.cloud/webhook/imgheadline`
+- **Method**: POST
+- **Path**: `/imgheadline`
+
+### **Request Format**
+```json
+{
+  "email": "user@example.com",
+  "keyword": "quốc tế thiếu nhi",
+  "image_url": "https://res.cloudinary.com/dkccddiuv/image/upload/v1754530260/Yellow_and_Blue_qi6ydy.png"
+}
+```
+
+For detailed N8N flow setup instructions, see [N8N_FLOW_SETUP.md](./N8N_FLOW_SETUP.md).
+
 ## 🚀 Deployment to Vercel
 
 ### **Step 1: Prepare Environment Variables**
@@ -54,7 +79,7 @@ Create a `.env` file in the root directory:
 cp env.example .env
 
 # Edit the .env file with your actual webhook URL
-VITE_WEBHOOK_URL=https://your-actual-n8n-domain.com/webhook/cm
+VITE_WEBHOOK_URL=https://hungdang2.app.n8n.cloud/webhook/imgheadline
 ```
 
 ### **Step 2: Deploy to Vercel**
@@ -86,6 +111,28 @@ In your Vercel dashboard, go to Project Settings > Environment Variables and add
 | `VITE_WEBHOOK_URL` | `https://your-n8n-domain.com/webhook/cm` | Production |
 | `VITE_API_TIMEOUT` | `30000` | Production (optional) |
 | `VITE_DEBUG` | `false` | Production (optional) |
+
+## 🧪 Testing
+
+### **Test N8N Flow**
+You can test the N8N workflow directly using the provided test script:
+
+```bash
+# Install axios if not already installed
+npm install axios
+
+# Run the test script
+node test-n8n-flow.js
+```
+
+This will send a test request to your N8N webhook and display the response.
+
+### **Manual Testing**
+1. Start the development server: `npm run dev`
+2. Open `http://localhost:5173`
+3. Enter a valid email and keyword
+4. Submit the form
+5. Check your email for the generated image
 
 ## 🏗️ Build for Production
 
