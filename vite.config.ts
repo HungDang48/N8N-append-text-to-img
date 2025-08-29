@@ -20,9 +20,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api/webhook': {
-        target: 'https://hungdang2.app.n8n.cloud',
+        target: 'https://hungdang3.app.n8n.cloud',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/webhook/, '/webhook/imgheadline'),
+        rewrite: (path) => path.replace(/^\/api\/webhook/, '/webhook/Creating Headline Image'),
         secure: true,
         headers: {
           'Access-Control-Allow-Origin': '*',

@@ -5,7 +5,7 @@
 Dự án này đã được cấu hình để hoạt động với flow n8n của bạn. Dưới đây là các thông tin quan trọng:
 
 ### Webhook Configuration
-- **Webhook URL**: `https://hungdang2.app.n8n.cloud/webhook/imgheadline`
+- **Webhook URL**: `https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image`
 - **Webhook ID**: `b7d8cb10-3b75-4b8c-b73d-b64cdefd4d70`
 - **Method**: POST
 - **Path**: `/imgheadline`
@@ -24,7 +24,7 @@ Frontend sẽ gửi request với format:
 Tạo file `.env` trong thư mục gốc với nội dung:
 ```env
 # N8N Webhook URL
-VITE_WEBHOOK_URL=https://hungdang2.app.n8n.cloud/webhook/imgheadline
+VITE_WEBHOOK_URL=https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image
 
 # API timeout (milliseconds)
 VITE_API_TIMEOUT=30000
@@ -38,7 +38,7 @@ VITE_DEBUG=true
 #### Development Mode
 - Sử dụng proxy để tránh CORS issues
 - Request sẽ được gửi đến `/api/webhook` (proxy)
-- Proxy sẽ forward đến `https://hungdang2.app.n8n.cloud/webhook/imgheadline`
+- Proxy sẽ forward đến `https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image`
 
 #### Production Mode
 - Sử dụng trực tiếp webhook URL từ environment variable

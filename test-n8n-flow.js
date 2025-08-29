@@ -3,7 +3,7 @@
 
 const axios = require('axios');
 
-const WEBHOOK_URL = 'https://hungdang2.app.n8n.cloud/webhook/imgheadline';
+const WEBHOOK_URL = 'https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image';
 
 const testData = {
   email: 'test@example.com',

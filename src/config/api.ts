@@ -1,10 +1,10 @@
 // API Configuration
 export const API_CONFIG = {
   // Development: Use proxy to avoid CORS issues
-  WEBHOOK_URL: import.meta.env.DEV ? '/api/webhook' : import.meta.env.VITE_WEBHOOK_URL || 'https://hungdang2.app.n8n.cloud/webhook/imgheadline',
+  WEBHOOK_URL: import.meta.env.DEV ? '/api/webhook' : import.meta.env.VITE_WEBHOOK_URL || 'https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image',
   
   // Production: Use environment variable or fallback to actual URL
-  PRODUCTION_WEBHOOK_URL: import.meta.env.VITE_WEBHOOK_URL || 'https://hungdang2.app.n8n.cloud/webhook/imgheadline',
+  PRODUCTION_WEBHOOK_URL: import.meta.env.VITE_WEBHOOK_URL || 'https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image',
   
   // Timeout settings - use environment variable or default
   TIMEOUT: parseInt(import.meta.env.VITE_API_TIMEOUT || '30000'),

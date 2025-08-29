@@ -54,7 +54,7 @@ This application is designed to work with a specific N8N workflow that:
 5. **Sends results via email** using Gmail integration
 
 ### **Webhook Configuration**
-- **URL**: `https://hungdang2.app.n8n.cloud/webhook/imgheadline`
+- **URL**: `https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image`
 - **Method**: POST
 - **Path**: `/imgheadline`
 
@@ -79,7 +79,7 @@ Create a `.env` file in the root directory:
 cp env.example .env
 
 # Edit the .env file with your actual webhook URL
-VITE_WEBHOOK_URL=https://hungdang2.app.n8n.cloud/webhook/imgheadline
+VITE_WEBHOOK_URL=https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image
 ```
 
 ### **Step 2: Deploy to Vercel**

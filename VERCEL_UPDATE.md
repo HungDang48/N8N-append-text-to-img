@@ -4,7 +4,7 @@
 
 ### **URL N8N thực tế:**
 ```
-https://hungdang2.app.n8n.cloud/webhook/imgheadline
+https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image
 ```
 
 ## 🚀 Cách cập nhật Vercel
@@ -18,7 +18,7 @@ https://hungdang2.app.n8n.cloud/webhook/imgheadline
 2. **Vào Settings → Environment Variables:**
    - Click "Add New"
    - Variable Name: `VITE_WEBHOOK_URL`
-   - Value: `https://hungdang2.app.n8n.cloud/webhook/imgheadline`
+   - Value: `https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image`
    - Environment: Production
    - Click "Save"
 
@@ -52,11 +52,11 @@ Settings → Environment Variables
 ```
 
 Đảm bảo có:
-- `VITE_WEBHOOK_URL` = `https://hungdang2.app.n8n.cloud/webhook/imgheadline`
+- `VITE_WEBHOOK_URL` = `https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image`
 
 ### **Test N8N Webhook trực tiếp:**
 ```bash
-curl -X POST https://hungdang2.app.n8n.cloud/webhook/imgheadline \
+curl -X POST https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image \
   -H "Content-Type: application/json" \
   -d '{"email":"test@example.com","keyword":"test keyword"}'
 ```
@@ -87,7 +87,7 @@ curl -X POST https://hungdang2.app.n8n.cloud/webhook/imgheadline \
 
 ### **URL sẽ được sử dụng:**
 - Development: `/api/webhook` (proxy)
-- Production: `https://hungdang2.app.n8n.cloud/webhook/imgheadline`
+- Production: `https://hungdang3.app.n8n.cloud/webhook/Creating Headline Image`
 
 ## 🚨 Troubleshooting
 
